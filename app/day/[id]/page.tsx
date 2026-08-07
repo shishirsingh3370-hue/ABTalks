@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, Copy } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import mockData from "@/data/mockData.json";
+import SubmissionForm from "./SubmissionForm";
 
 export default async function DayPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -10,33 +11,31 @@ export default async function DayPage({ params }: { params: Promise<{ id: string
 
   return (
     <div className="flex flex-col h-full bg-neutral-950">
-      <header className="flex items-center justify-between p-6 border-b border-neutral-900">
-        <Link href="/dashboard" className="text-neutral-400 hover:text-white transition-colors">
-          <ArrowLeft className="w-6 h-6" />
+      <header className="flex items-center p-6 border-b border-neutral-900">
+        <Link href="/dashboard" className="text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1">
+          <span>&larr;</span>
+          <span>Back to Dashboard</span>
         </Link>
-        <div className="text-center">
-          <span className="text-xs text-orange-500 font-bold uppercase tracking-wider block">Day {task.dayNumber}</span>
-          <span className="text-sm font-medium text-neutral-300">{task.track}</span>
-        </div>
-        <div className="w-6" />
       </header>
 
       <div className="flex-1 overflow-y-auto p-6 space-y-8">
         <div>
-          <h1 className="text-2xl font-bold mb-3">{task.title}</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-neutral-100 leading-snug mb-3">
+            Day {task.dayNumber}: {task.title}
+          </h1>
           <p className="text-neutral-400 text-sm leading-relaxed">
             {task.description}
           </p>
         </div>
 
-        <div>
-          <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+        <div className="bg-neutral-900/60 border border-neutral-800 rounded-2xl backdrop-blur-md p-5">
+          <h3 className="font-semibold text-lg mb-4 flex items-center gap-2 tracking-tight">
             <CheckCircle2 className="w-5 h-5 text-neutral-500" />
             Requirements
           </h3>
           <ul className="space-y-3">
             {task.requirements.map((req, i) => (
-              <li key={i} className="flex items-start gap-3 bg-neutral-900 p-4 rounded-xl border border-neutral-800">
+              <li key={i} className="flex items-start gap-3">
                 <div className="w-5 h-5 rounded-full border border-neutral-600 flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-neutral-300">{req}</span>
               </li>
@@ -45,19 +44,14 @@ export default async function DayPage({ params }: { params: Promise<{ id: string
         </div>
 
         <div>
-          <h3 className="font-semibold text-lg mb-4">LinkedIn Update</h3>
-          <div className="bg-[#0A66C2]/10 border border-[#0A66C2]/20 rounded-xl p-4 relative">
-            <p className="text-sm text-neutral-300 pr-8">{task.linkedInDraft}</p>
-            <button className="absolute top-4 right-4 text-[#0A66C2] hover:text-[#0A66C2]/80 transition-colors">
-              <Copy className="w-5 h-5" />
-            </button>
-          </div>
+          <h3 className="font-semibold text-lg mb-4 border-b border-neutral-900 pb-2 tracking-tight">Proof of Work</h3>
+          <SubmissionForm draftText={task.linkedInDraft} />
         </div>
       </div>
 
       <div className="p-6 border-t border-neutral-900 bg-neutral-950/80 backdrop-blur-md">
-        <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 rounded-xl transition-colors">
-          Submit Day {task.dayNumber} Update
+        <button className="w-full bg-neutral-100 hover:bg-white text-neutral-950 font-bold text-lg py-4 rounded-xl shadow-[0_4px_14px_0_rgba(255,255,255,0.1)] transition-all active:scale-[0.98]">
+          Submit Proof of Work
         </button>
       </div>
     </div>

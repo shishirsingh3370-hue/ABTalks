@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import Image from "next/image";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
@@ -21,10 +22,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-900`}
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-neutral-900`}
     >
-      <body className="min-h-screen flex flex-col items-center">
-        <main className="w-full max-w-[390px] min-h-screen bg-neutral-950 text-white relative shadow-2xl overflow-x-hidden flex flex-col">
+      <body className="min-h-screen flex flex-col items-center font-sans">
+        <main className="w-full max-w-[390px] min-h-screen bg-neutral-950 bg-[radial-gradient(circle_at_center,_#ffffff10_1px,_transparent_1px)] bg-[size:24px_24px] text-white relative shadow-2xl overflow-x-hidden flex flex-col">
+          <div className="w-full flex items-center justify-start p-6 pb-0 z-50 relative">
+            <div className="flex items-center gap-1.5 cursor-pointer">
+              <Image 
+                src="/logo.png" 
+                alt="AB Logo" 
+                width={48} 
+                height={48} 
+                className="object-contain invert opacity-90" 
+              />
+            </div>
+          </div>
           {children}
         </main>
       </body>
