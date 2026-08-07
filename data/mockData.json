@@ -1,0 +1,22 @@
+{
+  "studentName": "Rahul Sharma",
+  "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul",
+  "currentStreak": 12,
+  "targetDays": 60,
+  "completionPercentage": 20,
+  "gracePeriodActive": true,
+  "streakShieldsAvailable": 1,
+  "leaderboardRank": "#14 in Cohort",
+  "currentDayTask": {
+    "dayNumber": 12,
+    "title": "Build a Weather Dashboard Component",
+    "track": "Full-Stack Web Dev",
+    "description": "Create a responsive UI using OpenWeather API to display real-time weather and a 5-day forecast.",
+    "requirements": [
+      "Fetch live data from OpenWeather API or mock endpoint",
+      "Display temperature, humidity, and wind speed",
+      "Include a dark mode toggle"
+    ],
+    "linkedInDraft": "Day 12/60 of the ABTalks Challenge done! 🚀 Built a responsive Weather Dashboard component today. Focused on clean API handling and sleek mobile UI. Onward to Day 13! #ABTalks #100DaysOfCode #WebDev"
+  }
+}
