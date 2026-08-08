@@ -314,19 +314,3 @@ const handleSubmit = (e) => {
   }, 800);
 };
 ```
-
----
-
-### 2026-08-08 16:30:30
-## Step 16: Setup README template
-**Prompt:** 
-Repository URL: [Insert your GitHub link here]
-Live Deployment URL: [Insert your Vercel/Netlify link here]
-
-Route Map:
-/
-/dashboard
-/day/12
-
-open your README.md file at the root of your project.
-Delete all the generic Next.js boilerplate text that is currently in there.
