@@ -3,7 +3,21 @@
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 
-export default function SubmissionForm({ draftText }: { draftText: string }) {
+interface SubmissionFormProps {
+  draftText: string;
+  githubUrl: string;
+  setGithubUrl: (url: string) => void;
+  linkedinUrl: string;
+  setLinkedinUrl: (url: string) => void;
+}
+
+export default function SubmissionForm({ 
+  draftText,
+  githubUrl,
+  setGithubUrl,
+  linkedinUrl,
+  setLinkedinUrl
+}: SubmissionFormProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -18,6 +32,8 @@ export default function SubmissionForm({ draftText }: { draftText: string }) {
         <label className="block text-sm font-medium text-neutral-300">GitHub Repository or Commit URL</label>
         <input 
           type="url" 
+          value={githubUrl}
+          onChange={(e) => setGithubUrl(e.target.value)}
           placeholder="https://github.com/..."
           className="w-full bg-neutral-950 border border-neutral-700 hover:border-neutral-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 rounded-xl px-4 py-3 text-neutral-200 transition-colors placeholder:text-neutral-600" 
         />
@@ -42,6 +58,8 @@ export default function SubmissionForm({ draftText }: { draftText: string }) {
         </div>
         <input 
           type="url" 
+          value={linkedinUrl}
+          onChange={(e) => setLinkedinUrl(e.target.value)}
           placeholder="https://linkedin.com/posts/..."
           className="w-full bg-neutral-950 border border-neutral-700 hover:border-neutral-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 rounded-xl px-4 py-3 text-neutral-200 transition-colors placeholder:text-neutral-600" 
         />
