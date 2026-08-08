@@ -267,3 +267,66 @@ Build a premium, high-converting mobile landing page with the following structur
 1. Increase the gap above the Outcomes Grid: Change its margin from `mt-8` to `mt-12` so the content breathes and fills more vertical space.
 2. Reduce the Footer's dead space: Change the footer wrapper's styling from `mt-12 pb-32` to `mt-10 pb-24`. 
 3. Ensure the button container remains strictly anchored to the bottom: `absolute bottom-0 w-full p-6`.
+
+---
+
+### 2026-08-08 13:58:43
+## Step 14: Submission Form State and Logic
+**Prompt:** Update `app/day/[id]/page.tsx` to make the submission form fully functional.
+
+1. Client Component: Add `"use client";` at the very top of the file so we can use React hooks.
+2. Imports: Import `useState` from 'react' and `useRouter` from 'next/navigation'.
+3. State Initialization: 
+   - Create a state for `githubUrl` (string).
+   - Create a state for `linkedinUrl` (string).
+   - Create a state for `isSubmitting` (boolean).
+4. Bind Inputs: Attach `value={githubUrl}` and `onChange={(e) => setGithubUrl(e.target.value)}` to the GitHub input, and do the same for the LinkedIn input.
+5. The Submit Function: Create a `handleSubmit` function. Inside it:
+   - Check if both inputs are filled. If not, maybe return early (basic validation).
+   - Set `isSubmitting` to true.
+   - Use `setTimeout` for 800ms to simulate network latency (giving the user a realistic loading experience).
+   - Inside the timeout, call `router.push('/dashboard')` to send them back to the main app.
+6. Bind the Button: Attach `onClick={handleSubmit}` to the "Submit Proof of Work" button.
+7. Dynamic Button State: Change the button's text to "Submitting..." and add `disabled={isSubmitting}` when the state is active to prevent double-clicks. Apply an `opacity-70` class when disabled.
+
+---
+
+### 2026-08-08 14:10:57
+## Step 15: Enhanced Submission Validation
+**Prompt:** 
+```javascript
+const handleSubmit = (e) => {
+  // 1. Stop the browser from refreshing the page
+  if (e) e.preventDefault(); 
+  
+  // 2. Basic validation to ensure they actually typed something
+  if (!githubUrl || !linkedinUrl) {
+    alert("You must provide both links.");
+    return;
+  }
+
+  // 3. Trigger the loading state
+  setIsSubmitting(true);
+
+  // 4. Simulate a network request, then explicitly route to dashboard
+  setTimeout(() => {
+    router.push('/dashboard');
+  }, 800);
+};
+```
+
+---
+
+### 2026-08-08 16:30:30
+## Step 16: Setup README template
+**Prompt:** 
+Repository URL: [Insert your GitHub link here]
+Live Deployment URL: [Insert your Vercel/Netlify link here]
+
+Route Map:
+/
+/dashboard
+/day/12
+
+open your README.md file at the root of your project.
+Delete all the generic Next.js boilerplate text that is currently in there.
