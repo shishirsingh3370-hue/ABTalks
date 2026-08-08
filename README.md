@@ -1,7 +1,7 @@
 # Codathon
 
-Repository URL: [Insert your GitHub link here]
-Live Deployment URL: [Insert your Vercel/Netlify link here]
+Repository URL: https://github.com/shishirsingh3370-hue/ABTalks.git
+Live Deployment URL: https://ab-talks-alpha.vercel.app/
 
 Route Map:
 /
